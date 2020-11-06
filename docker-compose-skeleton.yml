@@ -1,0 +1,71 @@
+version: '3.7'
+services:
+
+    postgres:                                          
+        image: postgres:9.6
+        container_name: postgres_container
+        environment:
+            - POSTGRES_USER=airflow
+            - POSTGRES_PASSWORD=airflow
+            - POSTGRES_DB=airflow
+
+    airflow:                                            
+        build: './airflow_docker'                       
+        container_name: airflow_container
+        restart: always
+        depends_on:
+            - postgres
+        environment:
+            - LOAD_EX=n
+            - EXECUTOR=Local
+            - DISPLAY=$DISPLAY
+        volumes:                                        
+            - ./dags:/usr/local/airflow/dags
+            - ./requirements.txt:/requirements.txt
+            
+            
+        ports:
+            - "8080:8080"                               
+        command: webserver
+        healthcheck:
+            test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
+            interval: 30s
+            timeout: 30s
+            retries: 3
+
+    
+    
+    postgresql:
+        image: postgres:10.5
+        container_name: postgresql
+        ports:
+            - 5432:5432
+        environment:
+            POSTGRES_USER: postmlflow
+            POSTGRES_PASSWORD: postmlflowpass
+            POSTGRES_DB: mlflow-db
+            POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+        hostname: postgresql
+        restart: always
+        
+    
+    waitfordb:
+        image: dadarek/wait-for-dependencies
+        depends_on:
+            - postgresql
+        command: postgresql:5432
+    
+    mlflow:                                             
+        build: './mlflow_docker'                        
+        container_name: mlflow_container
+        depends_on:
+            - postgresql
+            - waitfordb
+        volumes:
+            - ./dags/Project_name/artifacts:/dags/Project_name/artifacts
+        ports:
+            - "5000:5000"                              
+        command: 'mlflow server --backend-store-uri postgresql+psycopg2://postmlflow:postmlflowpass@postgresql:5432/mlflow-db --default-artifact-root ./dags/Project_name/artifacts --host 0.0.0.0 --port 5000'
+        
+        
+

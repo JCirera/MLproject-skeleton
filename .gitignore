@@ -6,6 +6,11 @@ __pycache__/
 # C extensions
 *.so
 
+
+# artifacts
+dags/Project_name/artifacts/
+
+
 # Distribution / packaging
 .Python
 build/
