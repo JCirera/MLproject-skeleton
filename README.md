@@ -8,7 +8,11 @@ This repository is made by data scientists for data scientits. It has the aim to
 	
 ## Architecture
 
+![alt text](https://github.com/JCirera/MLproject-skeleton/blob/main/Architecture.jpg?raw=true)
 
+NOTE: 
+* The python and airflow container is based on [puckel](https://github.com/puckel/docker-airflow) with some modifications due to specific requirements of snap7 library.
+* There is a fifth container, hidden in the architecture diagram, to wait for dependencies. It is courtesy of [dadarek](https://github.com/dadarek/docker-wait-for-dependencies)
 	
 ## Setup
 To run this project, clone the repo and run the next command in the project folder:
@@ -16,4 +20,4 @@ To run this project, clone the repo and run the next command in the project fold
 ```
 docker-compose -f docker-compose-skeleton.yml up
 ```
-NOTE: it is necessary to have [Docker](https://github.com/docker) and [Docker Compose] (https://github.com/docker/compose) installed in your host machine.
+NOTE: it is necessary to have [Docker](https://github.com/docker) and [Docker Compose](https://github.com/docker/compose) installed in your host machine.
