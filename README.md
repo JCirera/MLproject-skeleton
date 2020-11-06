@@ -4,7 +4,7 @@
 * [Setup](#setup)
 
 ## General info
-This repository is made by data scientists for data scientits. It has the aim to reduce the time searching for installers and libraries when starting a new project. It also considers the necessity to orchestrate the ML pipelines [Airflow](https://github.com/apache/airflow) and to track and register the models [MLFlow](https://github.com/mlflow/mlflow).
+This repository is made by data scientists for data scientits. It has the aim to reduce the time searching for installers and libraries when starting a new project. It also considers the necessity to orchestrate the ML pipelines with [Airflow](https://github.com/apache/airflow) and to track and register the models with [MLFlow](https://github.com/mlflow/mlflow).
 	
 ## Architecture
 
@@ -12,7 +12,7 @@ This repository is made by data scientists for data scientits. It has the aim to
 
 NOTE: 
 * The python and airflow container is based on [puckel](https://github.com/puckel/docker-airflow) with some modifications due to specific requirements of snap7 library.
-* There is a fifth container, hidden in the architecture diagram, to wait for dependencies. It is courtesy of [dadarek](https://github.com/dadarek/docker-wait-for-dependencies)
+* There is a fifth container, hidden in the architecture diagram, to wait for dependencies. It is courtesy of [dadarek](https://github.com/dadarek/docker-wait-for-dependencies).
 	
 ## Setup
 To run this project, clone the repo and run the next command in the project folder:
