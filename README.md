@@ -5,7 +5,7 @@
 * [Discussion and conclusions](#discussion-and-conclusions)
 
 ## General info
-This repository is made by data scientists for data scientits. It has the aim to reduce the time searching for installers and libraries when starting a new project. It also considers the necessity to orchestrate the ML pipelines with [Airflow](https://github.com/apache/airflow) and to track and register the models with [MLFlow](https://github.com/mlflow/mlflow).
+This repository is made by data scientists for data scientits. Its aim is to reduce time searching for installers and libraries when starting a new project. It also considers the necessity to orchestrate the ML pipelines with [Airflow](https://github.com/apache/airflow) and to track and register the models with [MLFlow](https://github.com/mlflow/mlflow).
 	
 ## Architecture
 
